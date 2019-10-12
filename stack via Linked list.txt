@@ -1,0 +1,47 @@
+#include stdio.h
+#include stdlib.h
+
+struct Node{
+  int data;
+  struct Nodenext;
+
+};
+struct Nodetop = NULL;
+void Push(int data){
+
+  struct Nodetemp = (Node)malloc(sizeof(struct Node));
+  temp-data = data;
+  temp-next = top;
+  top = temp;
+
+
+}
+void Pop(){
+
+  struct Nodetemp = top;
+  if(top == NULL)
+    return;
+  top = temp-next;
+  free(temp);
+
+
+
+}
+void Print(){
+
+   struct Nodetemp = top;
+   while(temp!=NULL)
+   {
+       printf( %d,temp-data);
+       temp = temp-next;
+   }
+ printf(n);
+
+}
+void Top()
+{
+    struct Nodetemp = top;
+    if(top == NULL)
+        return;
+    printf( %d,temp-data);
+}
