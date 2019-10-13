@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stack>
+#include <string>
+using namespace std;
+int EvaluatePostfix(string exp)
+{
+    int n = exp.length();
+    stack<int> S;
+    for(int i=0;i<n;i++)
+    {
+        if(isdigit(exp[i]))
+            S.push(exp[i] - '0');
+        else{
+            int op1 = S.top();
+            S.pop();
+            int op2 = S.top();
+            S.pop();
+            switch(exp[i])
+            {
+                case '+': S.push(op1 + op2); break;
+                case '-': S.push(op1 - op2); break;
+                case '*': S.push(op1 * op2); break;
+                case '/': S.push(op1 / op2); break;
+            }
+
+        }
+    }
+    return S.top();
+}
+int main(){
+
+  string s = "23*54*+2-";
+  printf("%d",EvaluatePostfix(s));
+
+
+}
