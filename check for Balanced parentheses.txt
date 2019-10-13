@@ -1,0 +1,64 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string>
+#include <stack>
+using namespace std;
+bool BalancedParentheses(string exp)
+{
+    char x;
+    int n = exp.length();
+    stack<char> S;
+    for(int i=0;i<n;i++)
+    {
+        if(exp[i] == '(' || exp[i] == '[' || exp[i] == '{')
+        {
+            S.push(exp[i]);
+
+        }else if(exp[i] == '}' || exp[i] == ']' || exp[i] == ')')
+        {
+                     if(S.empty())
+                    return false;
+
+                    switch(exp[i])
+                    {
+                   case '}':
+
+                     x = S.top();
+                     S.pop();
+                     if(x == '(' || x == '[')
+                            return false;
+                     break;
+
+                   case ')':
+
+                    x = S.top();
+                    S.pop();
+                    if(x == '{' || x == '[')
+                        return false;
+                    break;
+                   case ']':
+
+                    x = S.top();
+                    S.pop();
+                    if(x == '{' || x == '(')
+                        return false;
+                    break;
+
+                    }
+
+        }
+    }
+    return S.empty()?true:false;
+}
+int main(){
+
+
+ string  s = "[Ib{ro}him]";
+ if(BalancedParentheses(s))
+ {
+     printf("Balanced");
+ }else{
+   printf("Not Balanced");
+ }
+
+}
