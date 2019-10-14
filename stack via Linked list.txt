@@ -6,22 +6,22 @@ struct Node{
   struct Nodenext;
 
 };
-struct Nodetop = NULL;
+struct *Node top = NULL;
 void Push(int data){
 
   struct Nodetemp = (Node)malloc(sizeof(struct Node));
-  temp-data = data;
-  temp-next = top;
+  temp->data = data;
+  temp->next = top;
   top = temp;
 
 
 }
 void Pop(){
 
-  struct Nodetemp = top;
+  struct *Node temp = top;
   if(top == NULL)
     return;
-  top = temp-next;
+  top = temp->next;
   free(temp);
 
 
@@ -29,19 +29,19 @@ void Pop(){
 }
 void Print(){
 
-   struct Nodetemp = top;
+   struct *Node temp = top;
    while(temp!=NULL)
    {
-       printf( %d,temp-data);
-       temp = temp-next;
+       printf( %d,temp->data);
+       temp = temp->next;
    }
  printf(n);
 
 }
 void Top()
 {
-    struct Nodetemp = top;
+    struct *Node temp = top;
     if(top == NULL)
         return;
-    printf( %d,temp-data);
+    printf( %d,temp->data);
 }
