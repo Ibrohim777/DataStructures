@@ -1,0 +1,21 @@
+#include <bits/stdc++.h>
+#define MAX_SIZE  100
+int A[MAX_SIZE];
+int top = -1;
+void Push(int x){
+   if(top == MAX_SIZE - 1)
+   {
+       printf("Stack overflow");
+       return;
+   }
+   A[++top] = x;
+
+}
+void Pop(){
+  if(top == -1)
+  {
+      return;
+  }
+  top=-1;
+
+}

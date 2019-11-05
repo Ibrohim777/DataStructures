@@ -1,0 +1,50 @@
+#include <bits/stdc++.h>
+#define MAX_SIZE 10
+int A[MAX_SIZE];
+int front = -1,rear = -1;
+using namespace std;
+void EnQueue(int data)
+{
+    if((rear+1)%MAX_SIZE == front)
+    {
+        return ;
+
+    }else if(front == -1 && rear == -1)
+    {
+        front = rear = 0;
+    }else{
+       rear = (rear + 1)%MAX_SIZE;
+    }
+    A[rear] = data;
+
+}
+void DeQueue()
+{
+     if(front == -1 && rear == -1)
+            return;
+     if(front == rear)
+        front = rear = -1;
+     else{
+        front = (front+1)%MAX_SIZE;
+     }
+}
+
+int main(){
+
+  EnQueue(2);
+  EnQueue(4);
+  EnQueue(1);
+  EnQueue(1);
+  EnQueue(1);
+  EnQueue(1);
+  EnQueue(1);
+  EnQueue(1);
+  EnQueue(1);
+  EnQueue(1);
+  DeQueue();
+
+  for(int i = front;i<=rear;i++)
+    printf(" %d",A[i]);
+
+
+}

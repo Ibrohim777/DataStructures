@@ -1,0 +1,54 @@
+#include <iostream>
+
+using namespace std;
+struct BstNode{
+   int data;
+   BstNode*left;
+   BstNode*right;
+};
+BstNode*root;
+BstNode* GetNewNode(int data)
+{
+    BstNode *NewNode = new BstNode();
+    NewNode->data = data;
+    NewNode->left = NewNode->right = NULL;
+    return NewNode;
+}
+
+BstNode *Insert(BstNode *root,int data)
+{
+        if(root == NULL) {
+           root = GetNewNode(data);
+       }else if(data <= root->data)
+       {
+           root->left = Insert(root->left,data);
+       }else{
+           root->right = Insert(root->right,data);
+       }
+       return root;
+}
+int FindMin(BstNode*root)
+{
+    if(root == NULL)
+    {
+       cout  << "Error:Tree is empty\n";
+       return -1;
+    }
+    BstNode *current = root;
+   if(current->left == NULL)
+    return current->data;
+
+    return FindMin(current->left);
+}
+int main(){
+    BstNode *root = NULL;
+    root = Insert(root,15);
+    root = Insert(root,11);
+    root = Insert(root,17);
+    root = Insert(root,18);
+    root = Insert(root,13);
+    cout  << FindMin(root);
+
+
+
+}
