@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <queue>
+using namespace std;
+
+struct BstNode{
+  char data;
+  BstNode*left;
+  BstNode*right;
+};
+BstNode*GetNewNode(char data)
+{
+    BstNode *newNode = new BstNode();
+    newNode->data = data;
+    newNode->left = newNode->right = NULL;
+
+    return newNode;
+}
+BstNode* Insert(BstNode*root,char data)
+{
+    if(root == NULL)
+    {
+        root = GetNewNode(data);
+    }else if(data <= root->data)
+    root->left = Insert(root->left,data);
+    else{
+        root->right = Insert(root->right,data);
+    }
+    return root;
+
+
+}
+void InOrder(BstNode*root)
+{
+    if(root == NULL)
+        return;
+
+     InOrder(root->left);
+     printf("%c ",root->data);
+     InOrder(root->right);
+}
+
+int main(){
+  BstNode*root = NULL;
+  root = Insert(root,'a');
+  root = Insert(root,'b');
+  root = Insert(root,'c');
+  root = Insert(root,'d');
+  root = Insert(root,'e');
+  root = Insert(root,'f');
+  InOrder(root);
+
+
+
+
+
+
+}
