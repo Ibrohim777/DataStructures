@@ -1,0 +1,90 @@
+#include <iostream>
+
+using namespace std;
+
+struct Node{
+ int data;
+ Node*next;
+};
+struct Node*head;
+void Insert(int data)
+{
+    struct Node*temp = new Node();
+    temp->data = data;
+    temp->next = head;
+    head = temp;
+
+}
+void DeleteAll()
+{
+    struct Node*temp = head;
+    struct Node*temp1;
+    while(temp!=NULL)
+    {
+        temp1 = temp->next;
+        free(temp);
+
+        temp = temp1;
+    }
+    head = NULL;
+
+}
+void deleteKthNode(int k)
+{
+
+     if(head == NULL)
+            return;
+
+     if(k == 1)
+     {
+         DeleteAll();
+         return;
+     }
+
+     struct Node*ptr = head,*prev = NULL;
+     int count = 0;
+     while(ptr!=NULL)
+     {
+           count++;
+           if(k == count)
+           {
+
+              free(prev->next);
+              prev->next = ptr->next;
+              count = 0;
+           }
+
+           if(count!=0)
+            prev = ptr;
+
+           ptr = prev->next;
+
+     }
+}
+
+void Print()
+{
+    struct Node*temp = head;
+    while(temp!=NULL)
+    {
+        cout  << temp->data << " ";
+        temp = temp->next;
+    }
+    cout  << "\n";
+}
+
+int main(){
+    head = NULL;
+    Insert(3);
+    Insert(6);
+    Insert(8);
+    Insert(10);
+    Insert(15);
+    Insert(12);
+    Insert(14);
+    Insert(18);
+    Insert(7);
+    Print();
+    deleteKthNode(3);
+    Print();
+}
